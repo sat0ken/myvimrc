@@ -27,3 +27,6 @@ nnoremap <Leader>v 0v$h
 nnoremap <Leader>d 0v$hx
 noremap <Leader>y 0v$hy
 
+"quickrunを閉じる
+nnoremap <Leader>q :<C-u>bw! \[quickrun\ output\]<CR>
+
