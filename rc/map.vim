@@ -1,18 +1,28 @@
 let mapleader = "\<Space>"
 
 imap jj <esc>
-imap <Leader>h <Left>
-imap <Leader>l <Right>
-imap <Leader>j <Down>
-imap <Leader>k <Up>
-imap <S-j> <PageDown>
-imap <S-k> <PageUP>
-inoremap {} {}<LEFT>
-inoremap [] []<LEFT>
-inoremap () ()<LEFT>
-inoremap "" ""<LEFT>
-inoremap '' ''<LEFT>
-inoremap <> <><LEFT>
+imap 44 $
+imap 55 %
+imap 66 &
+imap -- =
+imap ^^ ~
+imap mm my
+
+"imap <Leader>s <Left>
+"imap <Leader>l <Right>
+"imap <Leader>j <Down>
+"imap <Leader>k <Up>
+"imap <S-j> <PageDown>
+"imap <S-k> <PageUP>
+inoremap { {}<LEFT>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [ []<LEFT>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap ( ()<LEFT>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap < <><LEFT>
 
 nnoremap <S-j> <PageDown>
 nnoremap <S-k> <PageUP>

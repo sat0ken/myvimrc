@@ -29,3 +29,11 @@ set showmatch
 set whichwrap=b,s,h,l,<,>,[,]
 set nowrapscan
 
+"日本語ヘルプ
+"helptags ~/.vim/vimdoc-ja/doc
+"set runtimepath+=$HOME/.vim/vimdoc-ja-master/doc
+"helptags $HOME/.vim/vimdoc-ja-master/doc
+set helplang=ja,en
+
+autocmd BufNewFile *.pl 0r $HOME/.vim/template/perl-script.txt
+autocmd BufNewFile *.go 0r $HOME/.vim/template/go-script.txt

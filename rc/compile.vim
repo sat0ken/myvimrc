@@ -1,2 +1,2 @@
 autocmd FileType perl,cgi :compiler perl
-autocmd FileType python :compiler python
+""autocmd FileType python :compiler python
