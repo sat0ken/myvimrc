@@ -98,8 +98,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType python setlocal completeopt-=preview
-
 
 " Enable heavy omni completion
 "if !exists('g:neocomplete#sources#omni#input_patterns')'
@@ -111,3 +109,37 @@ autocmd FileType python setlocal completeopt-=preview
 "filetype plugin indent on
 let g:quickrun_config={'*': {'split': 'vertical'}}
 set splitright
+
+"jedi-vimの設定
+NeoBundleLazy "davidhalter/jedi-vim", { "autoload": { "filetypes": [ "python", "python3", "djangohtml"] }}
+
+if ! empty(neobundle#get("jedi-vim"))
+  let g:jedi#auto_initialization = 1
+  let g:jedi#auto_vim_configuration = 1
+
+  nnoremap [jedi] <nop>
+  xnoremap [jedi] <nop>
+  nmap <leader>j [jedi]
+  xmap <leader>j [jedi]
+
+  "let g:jedi#completions_command = "<C-Space>"    # 補完キーの設定この場合はCtrl+Space
+  "let g:jedi#goto_assignments_command = "<C-g>"   # 変数の宣言場所へジャンプ（Ctrl + g)
+  "let g:jedi#goto_definiticommand = "<C-k>"      # Pydocを表示（Ctrl + k）
+  let g:jedi#rename_command = "[jedi]r"
+  let g:jedi#usages_command = "[jedi]n"
+  let g:jedi#popup_select_first = 0
+  let g:jedi#popup_on_dot = 0
+
+  autocmd FileType python setlocal completeopt-=preview
+
+  " for w/ neocomplete
+    if ! empty(neobundle#get("neocomplete.vim"))
+        autocmd FileType python setlocal omnifunc=jedi#completions
+        let g:jedi#completions_enabled = 0
+        let g:jedi#auto_vim_configuration = 0
+        if !exists('g:neocomplete#force_omni_input_patterns')
+            let g:neocomplete#force_omni_input_patterns = {}
+        endif
+        let g:neocomplete#force_omni_input_patterns.python = '%([^. t].|^s*@|^s*froms.+import |^s*from |^s*import )w*'
+    endif
+endif
